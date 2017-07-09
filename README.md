@@ -3,7 +3,7 @@ This is the script I use to physically control the power/reset buttons on my eth
 
 Each rig is defined in rigs.json where a GPIO.BCM pin is mapped to a power or reset terminal on the motherboard. 
 
-#Usage 
+# Usage 
 usage: main.py [-h] [-r] [-c] [-t TIME] id
 
 Control the physical power/restart buttons on a rig
@@ -17,22 +17,32 @@ optional arguments:
   -c, --cycle           Power down / power on the power button
   -t TIME, --time TIME  Time in seconds to hold physical button down, default = 3
 
-#example
+# example
 rigs.json
 ```
 {
  "rig1" : {
     "power" : 17,
     "reset" : 18
+  }, 
+   "rig3" : {
+    "power" : 98,
+    "reset" : 99
   }
 }
 ```
 
 As far as I know, sudo is required to access GPIO
+
 Hold the power button down on rig1 for 5 seconds
+
 `sudo python main.py rig1 -t 5`
-Power cycle the rig
+
+Power cycle rig1
+
 `sudo python main.py rig1 -c`
-Hold the reset button down (default -t is 3 seconds)
+
+Hold rig1 reset button down (default -t is 3 seconds)
+
 `sudo python main.py rig1 -r`
 

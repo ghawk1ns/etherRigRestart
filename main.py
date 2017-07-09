@@ -1,26 +1,25 @@
 import argparse
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import json
 import time
 
 def switch(pin, t=3, cycle=False):
-    print 'a'
-    # print 'pin=%s time=%s cycle=%s' % (pin, t, cycle)
-    # try:
-    #     # Reads the pins ac
-    #     GPIO.setmode(GPIO.BCM)
-    #     GPIO.setup(17, GPIO.OUT, initial=1)
-    #     # The relay I use is active=low
-    #     GPIO.output(pin, 0)
-    #     time.sleep(t)
-    #     GPIO.output(pin, 1)
-    #     if cycle:
-    #         time.sleep(5)
-    #         GPIO.output(pin, 0)
-    #         time.sleep(t)
-    #         GPIO.output(pin, 1)
-    # finally:
-    #     GPIO.cleanup()
+    print 'pin=%s time=%s cycle=%s' % (pin, t, cycle)
+    try:
+        # Reads the pins by their "Broadcom SOC channel" number
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(pin, GPIO.OUT, initial=1)
+        # The relay I use is active=low
+        GPIO.output(pin, 0)
+        time.sleep(t)
+        GPIO.output(pin, 1)
+        if cycle:
+            time.sleep(5)
+            GPIO.output(pin, 0)
+            time.sleep(t)
+            GPIO.output(pin, 1)
+    finally:
+        GPIO.cleanup()
 '''
     Restart Button: 
         1. Restart
