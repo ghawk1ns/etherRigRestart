@@ -1,0 +1,14 @@
+{
+  "kkdd" : {
+    "power" : 17,
+    "restart" : -1
+  },
+  "gUnit" : {
+    "power" : -1,
+    "restart" : -1
+  },
+  "scrambler" : {
+    "power" : -1,
+    "restart" : -1
+  }
+}
